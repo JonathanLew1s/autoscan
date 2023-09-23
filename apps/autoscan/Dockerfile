@@ -1,8 +1,4 @@
-FROM sc4h/alpine-s6overlay:v2-3.15
-
-ARG TARGETOS
-ARG TARGETARCH
-ARG TARGETVARIANT
+FROM ghcr.io/linuxserver/baseimage-alpine:3.18
 
 ENV \
   PATH="/app/autoscan:${PATH}" \
@@ -12,10 +8,10 @@ ENV \
   AUTOSCAN_VERBOSITY="0"
 
 # Binary
-COPY ["dist/autoscan_${TARGETOS}_${TARGETARCH}${TARGETVARIANT:+_7}/autoscan", "/app/autoscan/autoscan"]
+COPY autoscan /app/autoscan
 
 # Add root files
-COPY ["docker/run", "/etc/services.d/autoscan/run"]
+COPY ["apps/autoscan/run", "/etc/services.d/autoscan/run"]
 
 # Volume
 VOLUME ["/config"]
