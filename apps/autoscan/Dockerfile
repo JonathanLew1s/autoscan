@@ -11,7 +11,7 @@ ENV \
 COPY autoscan /app/autoscan
 
 # Add root files
-COPY ["apps/autoscan/run", "/etc/services.d/autoscan/run"]
+COPY ["/apps/autoscan/run", "/etc/services.d/autoscan/run"]
 
 # Volume
 VOLUME ["/config"]
