@@ -10,8 +10,14 @@ ENV \
 # Binary
 COPY autoscan /app/autoscan
 
-# Add root files
-COPY ["./run", "/etc/services.d/autoscan/run"]
+
+RUN chown -R root:root /app && \
+    chmod -R 755 /app && \
+    rm -rf /tmp/*
+
+USER abc
+
+CMD ["/app/autoscan"]
 
 # Volume
 VOLUME ["/config"]
