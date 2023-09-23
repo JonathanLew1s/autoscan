@@ -53,7 +53,7 @@ dockers:
   - image_templates:
       - "jonathanlew1s/autoscan:v{{ .Version }}-amd64"
       - "ghcr.io/jonathanlew1s/autoscan:v{{ .Version }}-amd64"
-    dockerfile: Dockerfile
+    dockerfile: ./apps/{{ .ProjectName }}/Dockerfile
     use: buildx
     build_flag_templates:
       - "--pull"
@@ -68,7 +68,7 @@ dockers:
   - image_templates:
       - "jonathanlew1s/autoscan:v{{ .Version }}-arm64"
       - "ghcr.io/jonathanlew1s/autoscan:v{{ .Version }}-arm64"
-    dockerfile: Dockerfile
+    dockerfile: ./apps/{{ .ProjectName }}/Dockerfile
     use: buildx
     build_flag_templates:
       - "--pull"
