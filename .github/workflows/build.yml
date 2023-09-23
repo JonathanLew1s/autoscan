@@ -91,9 +91,4 @@ jobs:
         with:
           name: build_darwin
           path: dist/*darwin*
-      
-      - name: Artifact Windows
-        uses: actions/upload-artifact@v3
-        with:
-          name: build_windows
-          path: dist/*windows*
+
