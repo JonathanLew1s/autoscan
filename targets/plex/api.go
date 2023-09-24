@@ -9,7 +9,7 @@ import (
 
 	"github.com/rs/zerolog"
 
-	"github.com/cloudbox/autoscan"
+	"github.com/jonathanlew1s/autoscan"
 )
 
 type apiClient struct {

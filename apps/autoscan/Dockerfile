@@ -1,5 +1,9 @@
 FROM ghcr.io/linuxserver/baseimage-alpine:3.18
 
+ARG TARGETOS
+ARG TARGETARCH
+ARG TARGETVARIANT
+
 ENV \
   PATH="/app/autoscan:${PATH}" \
   AUTOSCAN_CONFIG="/config/config.yml" \
@@ -8,16 +12,10 @@ ENV \
   AUTOSCAN_VERBOSITY="0"
 
 # Binary
-COPY autoscan /app/autoscan
+COPY ["dist/autoscan_${TARGETOS}_${TARGETARCH}${TARGETVARIANT:+_7}/autoscan", "/app/autoscan/autoscan"]
 
-
-RUN chown -R abc:abc /app && \
-    chmod -R 755 /app && \
-    rm -rf /tmp/*
-
-USER abc
-
-CMD ["/app/autoscan"]
+# Add root files
+COPY ["docker/run", "/etc/services.d/autoscan/run"]
 
 # Volume
 VOLUME ["/config"]
