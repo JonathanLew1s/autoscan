@@ -15,7 +15,7 @@ ENV \
 COPY ["dist/autoscan_${TARGETOS}_${TARGETARCH}${TARGETVARIANT:+_7}/autoscan", "/app/autoscan/autoscan"]
 
 # Add root files
-COPY ["apps/autoscan/run", "/etc/services.d/autoscan/run"]
+COPY ["./run", "/etc/services.d/autoscan/run"]
 
 # Volume
 VOLUME ["/config"]
