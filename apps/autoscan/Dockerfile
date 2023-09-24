@@ -11,7 +11,7 @@ ENV \
 COPY autoscan /app/autoscan
 
 
-RUN chown -R root:root /app && \
+RUN chown -R abc:abc /app && \
     chmod -R 755 /app && \
     rm -rf /tmp/*
 
