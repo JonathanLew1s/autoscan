@@ -51,7 +51,7 @@ changelog:
 # Docker
 dockers:
   - image_templates:
-      - "jonathanlew1s/autoscan:v{{ .Version }}-amd64"
+  #    - "jonathanlew1s/autoscan:v{{ .Version }}-amd64"
       - "ghcr.io/jonathanlew1s/autoscan:v{{ .Version }}-amd64"
     dockerfile: ./apps/{{ .ProjectName }}/Dockerfile
     use: buildx
@@ -66,7 +66,7 @@ dockers:
       - "--label=org.opencontainers.image.source={{.GitURL}}"
       - "--platform=linux/amd64"
   - image_templates:
-      - "jonathanlew1s/autoscan:v{{ .Version }}-arm64"
+  #    - "jonathanlew1s/autoscan:v{{ .Version }}-arm64"
       - "ghcr.io/jonathanlew1s/autoscan:v{{ .Version }}-arm64"
     dockerfile: ./apps/{{ .ProjectName }}/Dockerfile
     use: buildx
@@ -84,17 +84,17 @@ dockers:
 
 docker_manifests:
   - name_template: "jonathanlew1s/autoscan:v{{ .Version }}"
-    image_templates:
-      - "jonathanlew1s/autoscan:v{{ .Version }}-amd64"
-      - "jonathanlew1s/autoscan:v{{ .Version }}-arm64"
+ #   image_templates:
+ #     - "jonathanlew1s/autoscan:v{{ .Version }}-amd64"
+ #     - "jonathanlew1s/autoscan:v{{ .Version }}-arm64"
   - name_template: "ghcr.io/jonathanlew1s/autoscan:v{{ .Version }}"
     image_templates:
       - "ghcr.io/jonathanlew1s/autoscan:v{{ .Version }}-amd64"
       - "ghcr.io/jonathanlew1s/autoscan:v{{ .Version }}-arm64"
   - name_template: "{{ if not .IsNightly }}jonathanlew1s/autoscan:latest{{ end }}"
-    image_templates:
-      - "jonathanlew1s/autoscan:v{{ .Version }}-amd64"
-      - "jonathanlew1s/autoscan:v{{ .Version }}-arm64"
+ #   image_templates:
+ #     - "jonathanlew1s/autoscan:v{{ .Version }}-amd64"
+ #     - "jonathanlew1s/autoscan:v{{ .Version }}-arm64"
   - name_template: "{{ if not .IsNightly }}ghcr.io/jonathanlew1s/autoscan:latest{{ end }}"
     image_templates:
       - "ghcr.io/jonathanlew1s/autoscan:v{{ .Version }}-amd64"
